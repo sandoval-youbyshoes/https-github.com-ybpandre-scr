@@ -17,6 +17,7 @@ while [[ $file_size -le 0 ]]; do
   wget --tries=1 -O /home/you-ttp/ent_pass/ttp_entrantes.csv "http://192.168.56.101:8001/local/people-counter/.api?export-csv&date=$dia1-$dia2&res=1h"
   file_size=$(wc -c "/home/you-ttp/ent_pass/ttp_entrantes.csv" | awk '{print $1}')
   printf "%d\n" $file_size
+  sleep 45
 done
 
 echo "Baixando Primeiro Passantes"
@@ -30,6 +31,7 @@ while [[ $file_size -le 0 ]]; do
   wget --tries=1 -O /home/you-ttp/ent_pass/ttp_passantes.csv "192.168.56.104:8002/local/people-counter/.api?export-csv&date=$dia1-$dia2&res=1h"
   file_size=$(wc -c "/home/you-ttp/ent_pass/ttp_passantes.csv" | awk '{print $1}')
   printf "%d\n" $file_size
+  sleep 45
 done
 
 
