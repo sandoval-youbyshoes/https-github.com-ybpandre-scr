@@ -1,0 +1,9 @@
+CREATE TABLE `gerapromo` (
+  `Local` varchar(45) DEFAULT NULL,
+  `mc` varchar(14) DEFAULT NULL,
+  `desconto` varchar(11) DEFAULT NULL,
+  `pfinal` varchar(45) DEFAULT NULL,
+  `tipo` varchar(45) DEFAULT NULL,
+  `porig` varchar(20) DEFAULT NULL,
+  `nome` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
