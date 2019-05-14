@@ -1,0 +1,1 @@
+delete from entrantes_passantes where (DATE_FORMAT(interval_start,'%H:%i:%s') between '00:00:00' and '09:00:00') or (DATE_FORMAT(interval_start,'%H:%i:%s') between '22:00:00' and '23:00:00')
