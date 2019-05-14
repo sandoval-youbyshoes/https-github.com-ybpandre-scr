@@ -3,10 +3,10 @@
 dia1=$(date -d '- 30 day' '+%Y%m%d')
 dia2=$(date -d '-1 day' '+%Y%m%d')
 
-Echo "Apagando arquivos"
+echo "Apagando arquivos"
 rm -rf /home/you-spm/ent_pass/*
 
-Echo "Baixando Primeiro Entrantes"
+echo "Baixando Primeiro Entrantes"
 wget --tries=1 -O /home/you-spm/ent_pass/spm_entrantes.csv "http://192.168.23.112:8001/local/people-counter/.api?export-csv&date=$dia1-$dia2&res=1h"
 
 file_size=$(wc -c "/home/you-spm/ent_pass/spm_entrantes.csv" | awk '{print $1}')
@@ -19,7 +19,7 @@ while [[ $file_size -le 0 ]]; do
   printf "%d\n" $file_size
 done
 
-Echo "Baixando Primeiro Passantes"
+echo "Baixando Primeiro Passantes"
 wget --tries=1 -O /home/you-spm/ent_pass/spm_passantes.csv "http://192.168.23.108:8002/local/people-counter/.api?export-csv&date=$dia1-$dia2&res=1h"
 
 file_size=$(wc -c "/home/you-spm/ent_pass/spm_passantes.csv" | awk '{print $1}')

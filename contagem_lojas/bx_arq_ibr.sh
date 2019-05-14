@@ -19,7 +19,7 @@ while [[ $file_size -le 0 ]]; do
   printf "%d\n" $file_size
 done
 
-Echo "Baixando Primeiro Passantes"
+echo "Baixando Primeiro Passantes"
 wget --tries=1 -O /home/ibirapuera/ent_pass/ibr_passantes.csv "http://192.168.68.103:8002/local/people-counter/.api?export-csv&date=$dia1-$dia2&res=1h"
 
 file_size=$(wc -c "/home/ibirapuera/ent_pass/ibr_passantes.csv" | awk '{print $1}')

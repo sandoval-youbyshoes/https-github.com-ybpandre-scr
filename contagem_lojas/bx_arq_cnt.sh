@@ -3,10 +3,10 @@
 dia1=$(date -d '- 30 day' '+%Y%m%d')
 dia2=$(date -d '-1 day' '+%Y%m%d')
 
-Echo "Apagando arquivos"
+echo "Apagando arquivos"
 rm -rf /home/ybp-cnt/ent_pass/*
 
-Echo "Baixando Primeiro Entrantes"
+echo "Baixando Primeiro Entrantes"
 wget --tries=1 -O /home/ybp-cnt/ent_pass/cnt_entrantes.csv "http://192.168.15.6:8001/local/people-counter/.api?export-csv&date=$dia1-$dia2&res=1h"
 
 file_size=$(wc -c "/home/ybp-cnt/ent_pass/cnt_entrantes.csv" | awk '{print $1}')
