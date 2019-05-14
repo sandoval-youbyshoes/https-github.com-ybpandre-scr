@@ -1,6 +1,6 @@
 echo "Exportando Vendas....."
 data1=$(date "+%Y-%m-%d %H:%M:%S")
-if [ $eval == 'SIM'];
+if [ $eval == 'SIM' ];
 then
     echo "Eval está sendo atualizada"
     exit;
