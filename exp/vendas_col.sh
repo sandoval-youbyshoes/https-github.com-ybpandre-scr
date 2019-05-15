@@ -1,5 +1,6 @@
 echo "Exportando Vendas por coleção...."
 data1=$(date "+%Y-%m-%d %H:%M:%S")
+eval=$(mysql -N -u TI -psenhadoSQL1 YouHist -e 'Select Valor from paramsrelats Where Param="Atualizando"')
 if [ $eval == 'SIM' ];
 then
     echo "Eval está sendo atualizada"
