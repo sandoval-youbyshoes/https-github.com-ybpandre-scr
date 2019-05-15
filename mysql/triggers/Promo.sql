@@ -19,7 +19,7 @@ BEGIN
 
    IF (new.desconto IS NULL OR new.desconto = '' OR new.desconto < 1)
    THEN
-      SET new.desconto = ROUND((new.pfinal / new.porig) * 100, 0);
+      SET new.desconto = ROUND((1 -(new.pfinal / new.porig)) * 100, 0);
       SET new.pfinal = REPLACE(new.pfinal, ',', '.');
    ELSE
   SET new.pfinal = IF(new.porig * (1 - (new.desconto /100)) % 10 >= 9,TRUNCATE(new.porig * (1 - (new.desconto /100)),0) + 0.9,new.porig * (1 - (new.desconto /100)) - MOD(new.porig * (1 - (new.desconto /100)),10) - 0.1);
