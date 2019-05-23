@@ -34,10 +34,10 @@ select
 	IFNULL(CampLocal,'') as `Campeao local`,
 	if(PrimeiraDataCampLocal='-','',PrimeiraDataCampLocal) as `Primeira data de campeao local`,
 	if(UltimaDataCampLocal='-','',UltimaDataCampLocal) as `Ultima data de campeao local`,
-	IFNULL(VezesCampLocal,'') as `Numero de vezes campeao local`,
-	if(CampGlobal=null,'',CampGlobal) as `Campeao global`,
+	VezesCampLocal as `Numero de vezes campeao local`,
+	CampGlobal as `Campeao global`,
 	IF(PrimeiraDataCampGlobal='-','',PrimeiraDataCampGlobal) as `Primeira data de campeao global`,
 	IF(UltimaDataCampGlobal='-','',UltimaDataCampGlobal) as `Ultima data de campeao global`,
 	IFNULL(VezesCampGlobal,'') as `Numero de vezes campeao global`
 from
-	new_eval
+	new_eval;
