@@ -1,5 +1,5 @@
-ALTER ALGORITHM = UNDEFINED DEFINER = `TI` @`%` SQL SECURITY DEFINER VIEW `csvpromo` AS
-select
+ALTER ALGORITHM = UNDEFINED DEFINER = `TI` @`%` SQL SECURITY DEFINER VIEW `youhist`.`csvpromo` AS
+SELECT
   `pr`.`Local` AS `LOCAL`,
   concat('ybp_product.', `pr`.`mc`) AS `items_id/product_tmpl_id/id`,
   ifnull(
@@ -12,22 +12,24 @@ select
   '2' AS `items_id/base`,
   '-1' AS `items_id/price_discount`,
   `pi`.`item_Id` AS `Price List Items/ID Banco de Dados`,
-  concat(`pr`.`mc`, ': ', `pr`.`tipo`) AS `items_id/name`,
   substr(`pr`.`Local`, 3, 3) AS `name`,
   `pr`.`pfinal` AS `items_id/price_surcharge`,
-  `pi`.`pricelist` AS `Price List/ID Banco de Dados`
-from
+  `pi`.`pricelist` AS `Price List/ID Banco de Dados`,
+  REPLACE(
+    concat(`pr`.`mc`, ': ', `pr`.`tipo`),
+    CHAR(13, 10),
+    ''
+  ) AS `items_id/name`
+FROM
   (
     (
-      `gerapromo` `pr`
-      join `locais` `l` on((`pr`.`Local` = `l`.`LocalC`))
+      `youhist`.`gerapromo` `pr`
+      JOIN `youhist`.`locais` `l` ON ((`pr`.`Local` = `l`.`LocalC`))
     )
-    left join `plist` `pi` on(
+    LEFT JOIN `youhist`.`plist` `pi` ON (
       (
         (`pi`.`company` = `l`.`company_id`)
-        and (
-          convert(`pr`.`mc` using utf8) = substr(`pi`.`name`, 1, 14)
-        )
+        AND (`pr`.`mc` = substr(`pi`.`name`, 1, 14))
       )
     )
   );

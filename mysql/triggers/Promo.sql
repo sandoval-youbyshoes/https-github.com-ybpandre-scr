@@ -9,13 +9,12 @@ BEGIN
              FROM o_products p
             WHERE SUBSTR(p.sku, 1, 14) = new.mc
             LIMIT 1);
-   SET new.tipo = TRIM(TRAILING '
-' FROM new.tipo);
-   SET new.tipo = TRIM(TRAILING '
-' FROM new.tipo);
-   SET new.tipo = TRIM(TRAILING '
-' FROM new.tipo);
+   SET new.tipo = TRIM(TRAILING '' FROM new.tipo);
    SET new.tipo = TRIM(TRAILING ' ' FROM new.tipo);
+   SET new.tipo = REPLACE(new.tipo, CHAR(13,10), '');
+   SET new.tipo = REPLACE(REPLACE(new.tipo, '
+', ''), '
+', '');
 
    IF (new.desconto IS NULL OR new.desconto = '' OR new.desconto < 1)
    THEN

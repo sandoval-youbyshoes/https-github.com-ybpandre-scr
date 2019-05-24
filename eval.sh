@@ -1,4 +1,14 @@
 #!/bin/bash
+eval=$(mysql -N -u TI -psenhadoSQL1 YouHist -e 'Select Valor from paramsrelats Where Param="Atualizando"')
+
+if [ $eval == 'SIM' ];
+then
+    echo "Eval está sendo atualizada"
+    exit;
+fi
+
+sleep 20
+
 data1=$(date "+%Y-%m-%d %H:%M:%S")
 /usr/games/cowsay "Inicio " $data1
 
